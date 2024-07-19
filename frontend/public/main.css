@@ -3,7 +3,7 @@ body {
   background-color: #f0f8ff;
   color: #333;
   margin: 0;
-  padding: 20px;
+  padding: 2px;
 }
 .header {
   background-color: #ffffff;
@@ -47,10 +47,11 @@ body {
   display: flex;
   justify-content: center; /* 横方向に中央揃え */
   align-items: center;     /* 縦方向に中央揃え */
-  gap: 20px;               /* アイテム間のスペース */
+  gap: 50px;               /* アイテム間のスペース */
 }
+
 /* 温湿度の値と単位をまとめるアイテム */
-.trh-item {
+.item {
   display: flex;
   align-items: center;    /* 中央揃え */
 }
@@ -66,7 +67,7 @@ body {
   font-size: 1.5em;                 /* 文字サイズ */
   font-weight: bold;              /* 太字 */
   color: #4a90e2;                 /* 文字色 */
-  margin-left: 5px;               /* 左側の余白 */
+  margin-left: 50px;               /* 左側の余白 */
 }
 /* 温湿度のラベル */
 .trh-labels {
@@ -84,43 +85,40 @@ body {
 .box {
   text-align: center;
   display: flex;
-  margin : 30px ;
   padding : 20px ;
+  gap: 8px;               /* アイテム間のスペース */
 }
 /* カード枠設定 */
 .box-card {
   background-color: #ffffff;
   border-bottom: 2px solid #ddd;
   width: 30vw;
-  height: 30vw;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 50px;
+  height: 25vw;
+  border-radius: 20px;
   justify-content: space-around;
+
 }
+
 /* 取得データのテキスト設定 */
 .box-value {
   font-size: 1.5em;               /* 温湿度の文字サイズを調整 */
   font-weight: bold;
   color: #576b82;
-  display: -webkit-flex;
-  display: flex;                  /* 横並び */
+  display:flex;
   align-items: center;            /* 垂直方向の中央揃え */
   justify-content: space-around;  /* 横方向に均等配置 */
-  -webkit-justify-content: center;
-  -webkit-align-items: center;
-  height: 200px;
+  height: 25vw;
 }
+
 /* 取得データの単位設定 */
 .box-unit {
   font-size: 1em;                 /* 単位の文字サイズを調整 */
   font-weight: bold;
   color: #576b82;
-  display: -webkit-flex;
-  display: flex;                  /* 横並び */
   align-items: center;            /* 垂直方向の中央揃え */
-  height: 200px;
+  justify-content: center; /* 横方向に中央揃え */
+  align-items: center;     /* 縦方向に中央揃え */
+  height: 200vw;
 }
 
 

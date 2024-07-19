@@ -13,23 +13,12 @@
     </div>
 
     <div class="trh">
-        <div class="trh-item">
-            <div class="trh-value" id="temperature">temp</div>
-            <div class="trh-unit">°C</div>
-        </div>
-        <div class="trh-item">
-            <div class="trh-value" id="humidity">humi</div>
-            <div class="trh-unit">%</div>
-        </div>
-    </div>
-
-    <div class="trh">
-        <div class="trh-item">
+        <div class="item">
             <div class="trh-values">温度</div>
             <div class="trh-value" id="temperature">temp</div>
             <div class="trh-unit">°C</div>
         </div>
-        <div class="trh-item">
+        <div class="item">
             <div class="trh-values">湿度</div>
             <div class="trh-value" id="humidity">humi</div>
             <div class="trh-unit">%</div>
@@ -38,32 +27,34 @@
    
 
     <div class="box">
+
         <div class="box-card">
-            <ver class="box-text">co2</ver><sup>ppm</sup>
+            <ver class="box-value">co2</ver><BR>ppm
         </div>
+
         <div class="box-card">
-            <ver class="box-text">head</ver>
+            <ver class="box-value">head</ver>
         </div>    
         <div class="box-card">
-            <ver class="box-text">head</ver>
+            <ver class="box-value">unkwon</ver>
         </div>
     </div>
     <div class="box">
         <div class="box-card">
-            <ver class="box-text">pm1</ver>
-            <div class="box-unit"> µg/m³</div>
+            <ver class="box-value">pm1</ver>
+            <div class="box-value"> µg/m³</div>
         </div>
         <div class="box-card">
-            <ver class="box-text">pm25</ver>
-            <div class="box-unit"> µg/m³</div>
+            <ver class="box-value">pm25</ver>
+            <div class="box-value"> µg/m³</div>
         </div>    
         <div class="box-card">
-            <ver class="box-text">pm4</ver>
-            <div class="box-unit"> µg/m³</div>
+            <ver class="box-value">pm4</ver>
+            <div class="box-value"> µg/m³</div>
         </div>
         <div class="box-card">
-            <ver class="box-text">pm10</ver>
-            <div class="box-unit"> µg/m³</div>
+            <ver class="box-value">pm10</ver>
+            <div class="box-value"> µg/m³</div>
         </div>
     </div>
 
@@ -96,14 +87,22 @@
                 const temperatureElement = document.getElementById('temperature');
                 const humidityElement = document.getElementById('humidity');
                 const headcountElement = document.getElementById('head');
+                const unkwonElement = document.getElementById('unkwon');
+                const pm1Element = document.getElementById('pm1');
                 const pm25Element = document.getElementById('pm25');
+                const pm4Element = document.getElementById('pm4');
+                const pm10Element = document.getElementById('pm10');
                 const co2Elment = document.getElementById('co2');
 
                 // 最新のデータを表示
                 temperatureElement.textContent = `温度: ${data[0].temp} °C`;
                 humidityElement.textContent = `湿度: ${data[0].humi} %`;
                 headcountElement.textContent = `人数: ${data[0].head} %`;
+                unkwonElement.textContent = `不快指数: ${data[0].unkwon} %`;
+                pm1Element.textContent = `pm1.0: ${data[0].pm25} %`;
                 pm25Element.textContent = `pm2.5: ${data[0].pm25} %`;
+                pm1Element.textContent = `pm4.0: ${data[0].pm25} %`;
+                pm10Element.textContent = `pm10.0: ${data[0].pm25} %`;
                 co2Elment.textContent = `二酸化炭素: ${data[0].co2} %`;
             
                 // グラフを更新
