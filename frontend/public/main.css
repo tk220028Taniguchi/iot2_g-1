@@ -60,7 +60,10 @@ body {
   font-size: 2em;                 /* 文字サイズ */
   font-weight: bold;              /* 太字 */
   color: #4a90e2;               /* 文字色 */
+  justify-content: center;        /* 横方向に中央揃え */
+  align-items: center;            /* 縦方向に中央揃え */
   text-align: center;             /* テキストの中央揃え */
+  gap: 50px;               /* アイテム間のスペース */
 }
 /* 温湿度の単位 */
 .trh-unit {
@@ -101,7 +104,7 @@ body {
 
 /* 取得データのテキスト設定 */
 .box-value {
-  font-size: 1.5em;               /* 温湿度の文字サイズを調整 */
+  font-size: 2em;               /* 温湿度の文字サイズを調整 */
   font-weight: bold;
   color: #576b82;
   display:flex;
@@ -112,14 +115,29 @@ body {
 
 /* 取得データの単位設定 */
 .box-unit {
-  font-size: 1em;                 /* 単位の文字サイズを調整 */
+  font-size: 1.5em;                 /* 単位の文字サイズを調整 */
+  margin: 2vw;
   font-weight: bold;
   color: #576b82;
   align-items: center;            /* 垂直方向の中央揃え */
-  justify-content: center; /* 横方向に中央揃え */
-  align-items: center;     /* 縦方向に中央揃え */
-  height: 200vw;
+  justify-content: center;        /* 横方向に中央揃え */
+  align-items: center;            /* 縦方向に中央揃え */
 }
 
 
-/* センサデータのラベル設定 */
+/* グラフの表示 */
+.chart-container {
+  width: 80vw;
+  max-width: 80vw;
+  margin: 3vw;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vw;
+}

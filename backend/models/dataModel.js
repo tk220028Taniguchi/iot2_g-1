@@ -20,15 +20,15 @@ connection.connect(error => {    // データベース接続の実施
 module.exports = connection;     // 接続オブジェクトのエクスポート(オブジェクト再利用の為)
 
 // データ取得エンドポイント
-app.get('/api/data', async (req, res) => {
-  let conn;
-  try {
+app.get('/api/data', async function (res) {
+    let conn;
+    try {
       conn = await pool.getConnection();
       const rows = await conn.query('SELECT temperature, humidity FROM your_table ORDER BY timestamp DESC LIMIT 7');
       res.json(rows);
-  } catch (err) {
+    } catch (err) {
       res.status(500).json({ error: 'データ取得エラー' });
-  } finally {
+    } finally {
       if (conn) conn.end();
-  }
-});
+    }
+  });

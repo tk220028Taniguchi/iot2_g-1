@@ -15,12 +15,12 @@
     <div class="trh">
         <div class="item">
             <div class="trh-values">温度</div>
-            <div class="trh-value" id="temperature">temp</div>
+            <div class="trh-value" id="temp">temp</div>
             <div class="trh-unit">°C</div>
         </div>
         <div class="item">
             <div class="trh-values">湿度</div>
-            <div class="trh-value" id="humidity">humi</div>
+            <div class="trh-value" id="humi">humi</div>
             <div class="trh-unit">%</div>
         </div>
     </div>
@@ -29,11 +29,13 @@
     <div class="box">
 
         <div class="box-card">
-            <ver class="box-value">co2</ver><BR>ppm
+            <ver class="box-value">co2</ver>
+            <div class="box-unit">ppm</div>
         </div>
 
         <div class="box-card">
             <ver class="box-value">head</ver>
+            <div class="box-unit">人数(人)</div>
         </div>    
         <div class="box-card">
             <ver class="box-value">unkwon</ver>
@@ -42,25 +44,25 @@
     <div class="box">
         <div class="box-card">
             <ver class="box-value">pm1</ver>
-            <div class="box-value"> µg/m³</div>
+            <div class="box-unit">µg/m³</div>
         </div>
         <div class="box-card">
             <ver class="box-value">pm25</ver>
-            <div class="box-value"> µg/m³</div>
+            <div class="box-unit">µg/m³</div>
         </div>    
         <div class="box-card">
             <ver class="box-value">pm4</ver>
-            <div class="box-value"> µg/m³</div>
+            <div class="box-unit">µg/m³</div>
         </div>
         <div class="box-card">
             <ver class="box-value">pm10</ver>
-            <div class="box-value"> µg/m³</div>
+            <div class="box-unit">µg/m³</div>
         </div>
     </div>
 
     <!-- グラフを表示するための <canvas> 要素 -->
     <div class="chart-container">
-        <canvas id="environmentChart" width="600vw" height="400vw"></canvas>
+        <canvas id="environmentChart"></canvas>
     </div>
 
 </body>
@@ -115,8 +117,8 @@
 
 
         // Chart.jsを用いて折れ線グラフを描画する
-               // Chart.js を用いて折れ線グラフを描画する関数
-               function updateChart(data) {
+        // Chart.js を用いて折れ線グラフを描画する関数
+        function updateChart(data) {
             const ctx = document.getElementById('environmentChart').getContext('2d');
 
             // グラフを描画する

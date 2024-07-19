@@ -1,5 +1,5 @@
 {
-  "ProjectName": "backend",
+  "ProjectName": "iot2_s",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies(version_data)": {
