@@ -1,0 +1,13 @@
+{
+  "ProjectName": "backend",
+  "version": "1.0.0",
+  "エントリーポイントファイル(main)": "index.js",
+  "dependencies(version_data)": {
+    "cors": "^2.8.5",
+    "express(Node.js)": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "scripts(コマンド)": {
+    "start": "node index.js"
+  }
+}

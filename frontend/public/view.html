@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>室内環境モニタリング</title>
+    <link rel="stylesheet" href="main.css"> <!-- 外部CSSファイルをリンク -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>室内環境モニタリング</h1>
+    </div>
+
+    <div class="trh">
+        <div class="trh-item">
+            <div class="trh-value" id="temperature">temp</div>
+            <div class="trh-unit">°C</div>
+        </div>
+        <div class="trh-item">
+            <div class="trh-value" id="humidity">humi</div>
+            <div class="trh-unit">%</div>
+        </div>
+    </div>
+
+    <div class="trh">
+        <div class="trh-item">
+            <div class="trh-values">温度</div>
+            <div class="trh-value" id="temperature">temp</div>
+            <div class="trh-unit">°C</div>
+        </div>
+        <div class="trh-item">
+            <div class="trh-values">湿度</div>
+            <div class="trh-value" id="humidity">humi</div>
+            <div class="trh-unit">%</div>
+        </div>
+    </div>
+   
+
+    <div class="box">
+        <div class="box-card">
+            <ver class="box-text">co2</ver><sup>ppm</sup>
+        </div>
+        <div class="box-card">
+            <ver class="box-text">head</ver>
+        </div>    
+        <div class="box-card">
+            <ver class="box-text">head</ver>
+        </div>
+    </div>
+    <div class="box">
+        <div class="box-card">
+            <ver class="box-text">pm1</ver>
+            <div class="box-unit"> µg/m³</div>
+        </div>
+        <div class="box-card">
+            <ver class="box-text">pm25</ver>
+            <div class="box-unit"> µg/m³</div>
+        </div>    
+        <div class="box-card">
+            <ver class="box-text">pm4</ver>
+            <div class="box-unit"> µg/m³</div>
+        </div>
+        <div class="box-card">
+            <ver class="box-text">pm10</ver>
+            <div class="box-unit"> µg/m³</div>
+        </div>
+    </div>
+
+    <!-- グラフを表示するための <canvas> 要素 -->
+    <div class="chart-container">
+        <canvas id="environmentChart" width="600vw" height="400vw"></canvas>
+    </div>
+
+</body>
+
+    <script src="scripts.js"></script> <!-- 外部JSファイルをリンク -->
+
+    <script>
+         //  mariaDBからデータを取得
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/data'); // サーバーの API エンドポイントを指定
+                if (!response.ok) {
+                    throw new Error('ネットワークエラー');
+                }const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('データ取得エラー:', error);
+            }
+        }
+        // 取得データをHTML形式に格納する
+        async function updateHtml() {
+            const data = await fetchData();
+            if (data && data.length > 0) {
+                const temperatureElement = document.getElementById('temperature');
+                const humidityElement = document.getElementById('humidity');
+                const headcountElement = document.getElementById('head');
+                const pm25Element = document.getElementById('pm25');
+                const co2Elment = document.getElementById('co2');
+
+                // 最新のデータを表示
+                temperatureElement.textContent = `温度: ${data[0].temp} °C`;
+                humidityElement.textContent = `湿度: ${data[0].humi} %`;
+                headcountElement.textContent = `人数: ${data[0].head} %`;
+                pm25Element.textContent = `pm2.5: ${data[0].pm25} %`;
+                co2Elment.textContent = `二酸化炭素: ${data[0].co2} %`;
+            
+                // グラフを更新
+                updateChart(data);
+            }
+        }
+
+
+
+
+
+        // Chart.jsを用いて折れ線グラフを描画する
+               // Chart.js を用いて折れ線グラフを描画する関数
+               function updateChart(data) {
+            const ctx = document.getElementById('environmentChart').getContext('2d');
+
+            // グラフを描画する
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['1h前', '2h前', '3h前', '4h前', '5h前', '6h前', '現在'], // X軸のラベル
+                    datasets: [
+                        {
+                            label: '温度 (°C)',
+                            data: data.map(item => item.temp), // 温度データ
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            yAxisID: 'y-axis-temp'
+                        },
+                        {
+                            label: '湿度 (%)',
+                            data: data.map(item => item.humi), // 湿度データ
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            yAxisID: 'y-axis-humi'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        yAxes: [
+                            {
+                                id: 'y-axis-temp',
+                                type: 'linear',
+                                position: 'left',
+                                ticks: {
+                                    suggestedMin: 20,
+                                    suggestedMax: 30
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: '温度 (°C)'
+                                }
+                            },
+                            {
+                                id: 'y-axis-humi',
+                                type: 'linear',
+                                position: 'right',
+                                ticks: {
+                                    suggestedMin: 40,
+                                    suggestedMax: 60
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: '湿度 (%)'
+                                }
+                            }
+                        ],
+                        xAxes: [{
+                            ticks: {
+                                autoSkip: true,
+                                maxTicksLimit: 7
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+         // ページ読み込み時にデータを更新
+         window.onload = function() {
+            updateHtml();
+        };
+    </script>
+
+</body>
+</html>

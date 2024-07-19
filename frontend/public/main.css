@@ -1,0 +1,127 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+.header {
+  background-color: #ffffff;
+  padding: 10px 0;
+  margin-bottom: 3vw;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  justify-content: space-around;
+}
+/* コンテンツ部分の余白 */
+body {
+  margin: 0;                 /* マージンをリセット */
+  padding-top: 80px;         /* ヘッダーの高さ分だけ余白を追加 */
+}
+.header h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #4a90e2;
+}
+.content {
+  display: flex;
+  align-items: center;
+  margin-top: 20vw; /* ヘッダー分のスペースを確保 */
+  margin-bottom: 5vw;
+}
+
+
+/* 温湿度の枠設定 */
+.trh {
+  background-color: #ffffff;
+  text-align: center;
+  margin: 30px auto; /* 中央揃えにするために auto を使用 */
+  padding: 20px;
+  border-bottom: 2px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center; /* 横方向に中央揃え */
+  align-items: center;     /* 縦方向に中央揃え */
+  gap: 20px;               /* アイテム間のスペース */
+}
+/* 温湿度の値と単位をまとめるアイテム */
+.trh-item {
+  display: flex;
+  align-items: center;    /* 中央揃え */
+}
+/* 温湿度の値 */
+.trh-value {
+  font-size: 2em;                 /* 文字サイズ */
+  font-weight: bold;              /* 太字 */
+  color: #4a90e2;               /* 文字色 */
+  text-align: center;             /* テキストの中央揃え */
+}
+/* 温湿度の単位 */
+.trh-unit {
+  font-size: 1.5em;                 /* 文字サイズ */
+  font-weight: bold;              /* 太字 */
+  color: #4a90e2;                 /* 文字色 */
+  margin-left: 5px;               /* 左側の余白 */
+}
+/* 温湿度のラベル */
+.trh-labels {
+  font-size: 1em;           /* ラベルのフォントサイズを調整 */
+  font-weight: bold;
+  color: #cdffc0;
+  display: flex;
+  flex-direction: column;
+  text-align: justify;      /*  */
+  text-align-last: justify;
+}
+
+
+/* 環境boxの範囲背定 */
+.box {
+  text-align: center;
+  display: flex;
+  margin : 30px ;
+  padding : 20px ;
+}
+/* カード枠設定 */
+.box-card {
+  background-color: #ffffff;
+  border-bottom: 2px solid #ddd;
+  width: 30vw;
+  height: 30vw;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 50px;
+  justify-content: space-around;
+}
+/* 取得データのテキスト設定 */
+.box-value {
+  font-size: 1.5em;               /* 温湿度の文字サイズを調整 */
+  font-weight: bold;
+  color: #576b82;
+  display: -webkit-flex;
+  display: flex;                  /* 横並び */
+  align-items: center;            /* 垂直方向の中央揃え */
+  justify-content: space-around;  /* 横方向に均等配置 */
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+  height: 200px;
+}
+/* 取得データの単位設定 */
+.box-unit {
+  font-size: 1em;                 /* 単位の文字サイズを調整 */
+  font-weight: bold;
+  color: #576b82;
+  display: -webkit-flex;
+  display: flex;                  /* 横並び */
+  align-items: center;            /* 垂直方向の中央揃え */
+  height: 200px;
+}
+
+
+/* センサデータのラベル設定 */
